@@ -1,0 +1,19 @@
+{
+  "name": "aws-sam-nodejs-example",
+  "version": "1.0.0",
+  "description": "AWS SAM API Gateway Nodejs example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://dawshiek-yogathasar@github.com/dawshiek-yogathasar/aws-sam-nodejs-example.git"
+  },
+  "author": "Dawshiek Yogathasar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dawshiek-yogathasar/aws-sam-nodejs-example/issues"
+  },
+  "homepage": "https://github.com/dawshiek-yogathasar/aws-sam-nodejs-example#readme"
+}

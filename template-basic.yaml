@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: aws-sam-nodejs-example
+
+Parameters:
+  environment:
+    Type: String
+    Default: dev
+  customDomain:
+    Type: String
+    Default: foo.example.com
+  stageName:
+    Type: String
+    Default: dev
+  certificateARN:
+    Type: String
+
+Resources:
+  helloworld:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda/index.handler
+      Runtime: nodejs6.10
+      CodeUri: .
+      Description: A starter AWS Lambda function.
+      MemorySize: 128
+      Timeout: 10
+      Events:
+        Get:
+          Type: Api
+          Properties:
+            Method: GET
+            Path: /helloworld
+
+  PathMapping:
+    Type: AWS::ApiGateway::BasePathMapping
+    DependsOn: ServerlessRestApi
+    Properties:
+      BasePath: test
+      DomainName: !Ref customDomain
+      RestApiId: !Ref ServerlessRestApi
+      Stage: !Ref ServerlessRestApiProdStage
+
+  APIGCustomDomain:
+    Type: AWS::ApiGateway::DomainName
+    Properties:
+      CertificateArn: !Ref certificateARN
+      DomainName: !Ref customDomain
+    
+  
